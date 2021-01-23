@@ -1,5 +1,6 @@
 project_name: fasthttp2curl
-
+build:
+  skip: true
 checksum:
   name_template: checksums.txt
 snapshot:
