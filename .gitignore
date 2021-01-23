@@ -1,25 +1,27 @@
-# Temporary files
-*~
-*#
-.#*
-coverage.txt
-
-# Vendors
-package-lock.json
-node_modules/
-vendor/
-
+# IDE Files
+.idea/
 # Binaries for programs and plugins
-dist/
-gin-bin
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
 
-# Test binary, build with `go test -c`
+# Test binary, built with `go test -c`
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+*.cov
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+gcloud.json
+out.version
+
+# make sure to change "microservice" to whatever the name
+# of your actual executable file is.
+microservice
+service
+main
+vendor/
