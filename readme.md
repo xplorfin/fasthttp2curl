@@ -6,7 +6,7 @@
 [![Build status](https://github.com/xplorfin/fasthttp2curl/workflows/test/badge.svg)](https://github.com/xplorfin/fasthttp2curl/actions?query=workflow%3Atest)
 [![Build status](https://github.com/xplorfin/fasthttp2curl/workflows/goreleaser/badge.svg)](https://github.com/xplorfin/fasthttp2curl/actions?query=workflow%3Agoreleaser)
 [![](https://godoc.org/github.com/xplorfin/fasthttp2curl?status.svg)](https://godoc.org/github.com/xplorfin/fasthttp2curl)
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/xplorfin/fasthttp2curl)](https://goreportcard.com/report/github.com/xplorfin/fasthttp2curl)
 
 Supports [net/http](https://godoc.org/net/http) and [fasthttp](https://github.com/valyala/fasthttp)
 
