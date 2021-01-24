@@ -43,6 +43,7 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.FOSS_PACKAGE_TOKEN }}
+          GOPROXY: https://proxy.golang.org
       -
         name: Notify slack success
         if: success()
@@ -64,4 +65,3 @@ jobs:
           channel: activity
           status: FAILED
           color: danger
-
