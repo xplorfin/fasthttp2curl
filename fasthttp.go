@@ -1,8 +1,9 @@
 package fasthttp2curl
 
 import (
-	"github.com/valyala/fasthttp"
 	"net/http"
+
+	"github.com/valyala/fasthttp"
 )
 
 // convert a fast http request object to a curl command
