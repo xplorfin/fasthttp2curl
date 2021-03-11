@@ -2,10 +2,11 @@ package fasthttp2curl
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/brianvoe/gofakeit/v5"
 	"github.com/go-http-utils/headers"
 	"github.com/valyala/fasthttp"
-	"testing"
 )
 
 var encodingHeader = []byte(headers.AcceptEncoding)

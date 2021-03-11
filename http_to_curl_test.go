@@ -2,11 +2,12 @@ package fasthttp2curl
 
 import (
 	"bytes"
-	"github.com/moul/http2curl"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"testing"
+
+	"github.com/moul/http2curl"
 )
 
 // taken from https://github.com/moul/http2curl/blob/master/http2curl_test.go

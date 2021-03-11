@@ -6,15 +6,12 @@ on:
     branches:
       - master
 
-env:
-  GOPROXY: https://proxy.golang.org
-
 jobs:
-  test:
+  lint:
     if: "!contains(toJSON(github.event.commits.*.message), '[ci skip]')"
     strategy:
       matrix:
-        go-version: [1.13.x, 1.14.x, 1.15.x]
+        go-version: [1.13.x, 1.14.x, 1.15.x, 1.16.x]
         platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
     steps:
@@ -22,21 +19,30 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
-      - name: Install go-acc
-        shell: bash
-        run: go get -u github.com/ory/go-acc
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Linters
-        run: "curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v1.35.2"
+        run: "curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin"
+      - name: Lint
+        run: make lint
+  test:
+    if: "!contains(toJSON(github.event.commits.*.message), '[ci skip]')"
+    strategy:
+      matrix:
+        go-version: [1.13.x, 1.14.x, 1.15.x, 1.16.x]
+        platform: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Test
-        run: ./goclean.sh
+        run: make ci-test
       - name: Send coverage
         uses: shogo82148/actions-goveralls@v1
         with:
           github-token: ${{ secrets.github_token }}
           path-to-profile: profile.cov
-      - name: Build
-        env:
-          GO111MODULE: "on"
-        run: go build ./...
